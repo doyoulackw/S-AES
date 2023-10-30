@@ -317,14 +317,14 @@ class Entry:
         entry2_value = self.entry_2.get()
 
         for i in range(self.key_1, 2 ** 16):
-            key_1 = hex(i)[2:]
-            key_1 = (4 - len(key_1)) * "0" + key_1
             for j in range(2 ** 16):
-                key_2 = hex(j)[2:]
-                key_2 = (4 - len(key_2)) * "0" + key_2
-
                 if i == self.key_1 and j <= self.key_2:
                     continue
+                
+                key_1 = hex(i)[2:]
+                key_1 = (4 - len(key_1)) * "0" + key_1
+                key_2 = hex(j)[2:]
+                key_2 = (4 - len(key_2)) * "0" + key_2
 
                 result_1 = self.s_aes.encrypt_b(entry1_value, key_1)
                 if not (result_1 == "明文内容不正确" or result_1 == "明文格式不正确"):

@@ -327,15 +327,11 @@ class Entry:
                 key_2 = (4 - len(key_2)) * "0" + key_2
 
                 result_1 = self.s_aes.encrypt_b(entry1_value, key_1)
-                if not (result_1 == "明文内容不正确" or result_1 == "明文格式不正确"):
-                    result_1 = self.s_aes.list_to_string(result_1)
-                else:
+                if result_1 == "明文内容不正确" or result_1 == "明文格式不正确":
                     return result_1
 
                 result_2 = self.s_aes.decrypt_b(entry2_value, key_2)
-                if not (result_2 == "密文内容不正确" or result_2 == "密文格式不正确"):
-                    result_2 = self.s_aes.list_to_string(result_2)
-                else:
+                if result_2 == "密文内容不正确" or result_2 == "密文格式不正确":
                     return result_2
 
                 if result_1 == result_2:
